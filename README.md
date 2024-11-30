@@ -52,6 +52,7 @@ Translate hand gestures into game controls
 
 📝 License
 Distributed under the MIT License. See LICENSE for more information.
+
 🙌 Acknowledgments
 
 Pygame Community
