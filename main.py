@@ -88,7 +88,7 @@ def welcomeScreen():
                 pygame.display.update()
                 fps_clock.tick(fps)
 
-def mainGame():
+async def mainGame():
     score = 0
     player_x = int(screen_width/8)
     player_y = int(screen_height/2)
@@ -219,6 +219,7 @@ def mainGame():
             Xoffset += game_images['numbers'][digit].get_width()
         pygame.display.update()
         fps_clock.tick(fps)
+        await asyncio.sleep(0)
 
 def isCollide(player_x, player_y, upperPipes, lowerPipes):
     if player_y>ground_y-25 or player_y<0:
@@ -252,6 +253,7 @@ def getRandomPipe():
     return pipe
 
 
+
 if __name__ == "__main__":
     pygame.init() 
     fps_clock = pygame.time.Clock()
@@ -283,11 +285,11 @@ if __name__ == "__main__":
     
  
     #Game Sounds
-    game_sounds['die'] = pygame.mixer.Sound('gallery/audio/die.wav')
-    game_sounds['hit'] = pygame.mixer.Sound('gallery/audio/hit.wav')
-    game_sounds['point'] = pygame.mixer.Sound('gallery/audio/point.wav')
-    game_sounds['swoosh'] = pygame.mixer.Sound('gallery/audio/swoosh.wav')
-    game_sounds['wing'] = pygame.mixer.Sound('gallery/audio/wing.wav')
+    game_sounds['die'] = pygame.mixer.Sound('gallery/audio/die.ogg')
+    game_sounds['hit'] = pygame.mixer.Sound('gallery/audio/hit.ogg')
+    game_sounds['point'] = pygame.mixer.Sound('gallery/audio/point.ogg')
+    game_sounds['swoosh'] = pygame.mixer.Sound('gallery/audio/swoosh.ogg')
+    game_sounds['wing'] = pygame.mixer.Sound('gallery/audio/wing.ogg')
  
     # ret, frm = cap.read()
     # cv2.imshow("WindowDisplay", frm)
@@ -296,5 +298,5 @@ if __name__ == "__main__":
         ret, frm = cap.read()
         cv2.imshow("CameraWindow", frm)
         welcomeScreen()
-        mainGame()
+        asyncio.run(mainGame())
 
