@@ -3,6 +3,7 @@ import cv2
 import random
 import sys
 import pygame
+import asyncio
 
 fps = 24
 screen_width = 289
